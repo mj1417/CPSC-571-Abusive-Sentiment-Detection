@@ -181,13 +181,18 @@ def preprocess_text(text):
 df1['processed_comment'] = df1['comment'].apply(preprocess_text)
 df2['processed_comment'] = df2['comment'].apply(preprocess_text)
 
-# Display the first few rows to verify
-print(df1.head())
+# Currently the class column is classified as
+# 0 for hate speech, 1 for offensive language and 2 for neither
+# we have changed the classification as
+# 1 for abusive sentiment and 0 for nothing
+df1['label'] = df1['class'].apply(lambda x: 1 if x in [0, 1] else 0)
+df2['label'] = df2['class'].apply(lambda x: 1 if x in [0, 1] else 0)
+
 
 # Save processed data to a new CSV
 df1.to_csv("processed_testing_dataset.csv", index=False)
 print("Successfully created the processed testing data file\n")
 
-print(df2.head())
 df2.to_csv("processed_training_dataset.csv", index=False)
 print("Successfully created the processed training data file\n")
+
