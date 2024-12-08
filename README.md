@@ -10,7 +10,7 @@ Follow these steps to set up the project locally:
 
 ### **1. Clone the Repository or Download the zip folder**
 ```bash
-git clone mj1417/CPSC-571-Abusive-Sentiment-Detection
+git clone https://github.com/mj1417/CPSC-571-Abusive-Sentiment-Detection.git
 ```
 
 ### **2. Navigate to the Poject Directory**
