@@ -31,7 +31,7 @@ The dataset is used in 80-20 split.
 **training dataset.csv** contains 80% of comments used to train the models and **testing dataset.csv** contains 20% of comments used to test the models.
 
 ### **2. Processed dataset**
-The two datasets, testing and training are processed using NLP techniques. It includes lowercasing, removing special characters, tokenization, stop word removal, lemmatization and handling slangs using a custome slang dictionary created for this project.
+The two datasets, testing and training are processed using NLP techniques. It includes lowercasing, removing special characters, tokenization, stop word removal, lemmatization and handling slangs using a custom slang dictionary created specially for this project.
 **processed_training_dataset.csv** contains the pre-processed training dataset using NLP techniques.
 **processed_testing_dataset.csv** contains the pre-processed testing dataset using NLP techniques.
 
