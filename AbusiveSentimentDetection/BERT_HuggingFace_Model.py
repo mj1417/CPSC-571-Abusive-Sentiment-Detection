@@ -5,21 +5,25 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from torch.optim import AdamW
 
-# Step 1: Load and preprocess data
+# Loading the pre-processed data
 # Load data
 df_train = pd.read_csv("processed_training_dataset.csv")
 df_test = pd.read_csv("processed_testing_dataset.csv")
 
 # Drop rows with missing or invalid labels
-df_train = df_train.dropna(subset=['label'])  # Drop rows with NaN values in the label column
-df_train['label'] = df_train['label'].astype(int)  # Convert label to integer
 
-df_test = df_test.dropna(subset=['label'])  # Do the same for the test dataset
+# Drop rows with NaN values in the label column
+df_train = df_train.dropna(subset=['label']) 
+# Convert label to integer
+df_train['label'] = df_train['label'].astype(int)  
+
+# Drop rows with NaN values in the label column
+df_test = df_test.dropna(subset=['label']) 
+# Convert label to integer
 df_test['label'] = df_test['label'].astype(int)
 
 # Initialize the BERT tokenizer
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-#tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
 
 # Define a dataset class
 class AbusiveCommentsDataset(Dataset):
@@ -66,7 +70,7 @@ test_dataset = AbusiveCommentsDataset(
 )
 test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
 
-# Step 2: Load BERT model with a classification layer
+# Loading BERT model with a classification layer
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 print(f"Using device: {device}")
 model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
@@ -77,7 +81,7 @@ model = model.to(device)
 optimizer = AdamW(model.parameters(), lr=2e-5)
 epochs = 3
 
-# Step 3: Training loop
+# Training loop
 model.train()
 for epoch in range(epochs):
     for batch in train_loader:
@@ -92,7 +96,7 @@ for epoch in range(epochs):
         optimizer.step()
     print(f"Epoch {epoch+1} completed")
 
-# Step 4: Evaluation on the test set
+# Evaluating the test set
 model.eval()
 all_preds = []
 all_labels = []
@@ -108,7 +112,7 @@ with torch.no_grad():
         all_preds.extend(preds.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
 
-# Calculate metrics
+# Calculating metrics
 accuracy = accuracy_score(all_labels, all_preds)
 precision, recall, f1, _ = precision_recall_fscore_support(all_labels, all_preds, average='binary')
 
@@ -117,7 +121,8 @@ print(f"Precision: {precision:.4f}")
 print(f"Recall: {recall:.4f}")
 print(f"F1-Score: {f1:.4f}")
 
-# Step 5: Save predictions to CSV
-df_test['predicted_label'] = all_preds  # Add predictions to the DataFrame
+# Save predictions to CSV
+# Add predictions to the DataFrame
+df_test['predicted_label'] = all_preds 
 df_test.to_csv("predicted_BERT_dataset.csv", index=False)
 print("Predictions have been saved")
