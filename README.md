@@ -10,12 +10,12 @@ Follow these steps to set up the project locally:
 
 ### **1. Clone the Repository or Download the zip folder**
 ```bash
-git clone ....
+git clone mj1417/CPSC-571-Abusive-Sentiment-Detection
 ```
 
 ### **2. Navigate to the Poject Directory**
 
 ```bash
-cd SentimentDetection
+cd AbusiveSentimentDetection
 ```
 
