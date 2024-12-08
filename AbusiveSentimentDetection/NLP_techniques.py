@@ -14,7 +14,6 @@ else:
     ssl._create_default_https_context = _create_unverified_https_context
 
 
-# Download NLTK data files
 # Downloads a list of common English stopwords
 nltk.download('stopwords')
 
@@ -28,7 +27,7 @@ nltk.download('wordnet')
 df1 = pd.read_csv("testing dataset.csv")
 df2 = pd.read_csv("training dataset.csv")
 
-# Initialize stop words, lemmatizer, and define slang dictionary
+# Initialize stop words, lemmatizer
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
