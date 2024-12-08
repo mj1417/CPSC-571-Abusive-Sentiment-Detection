@@ -1,7 +1,6 @@
 import pandas as pd
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification, AdamW
-#from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
 from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from torch.optim import AdamW
