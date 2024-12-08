@@ -1,6 +1,6 @@
 # **Abusive Sentiment Detection in Social Media Texts using Existing NLP techniques**
 
-Comparative analysis of two models (Naive Bayes and BERT) is done on the dataset containing scoial media comments rich in slangs and romanized script.
+Comparative analysis of two models (Naive Bayes and BERT) is done on the dataset containing social media comments rich in slangs and romanized script.
 
 ---
 
