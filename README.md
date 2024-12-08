@@ -39,7 +39,7 @@ The two datasets, testing and training are processed using NLP techniques. It in
 The results of the Naive Bayes model on processed testing dataset is stored in **predicted_NaiveBayes.csv**
 
 ### **4. Results of predicted BERT model**
-The results of the BERT model on processed testing dataset is stored in **predicted_BERT.csv**
+The results of the BERT model on processed testing dataset is stored in **predicted_BERT_dataset.csv**
 
 
 
